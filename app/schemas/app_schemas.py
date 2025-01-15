@@ -1,12 +1,19 @@
+from datetime import datetime
+from uuid import UUID
+
 from pydantic import BaseModel, Field
 
 
 class ApplicationCreate(BaseModel):
-    ...
+    user_name: str
+    description: str
 
 
 class ApplicationsCreateResponse(BaseModel):
-    ...
+    id: UUID
+    user_name: str
+    description: str
+    created_at: datetime
 
 
 class ApplicationsGetResponse(BaseModel):

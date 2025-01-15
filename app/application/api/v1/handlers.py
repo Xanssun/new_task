@@ -19,7 +19,8 @@ async def create_appplications(
     app_create: ApplicationCreate,
     app_service: ApplicationsService = Depends(get_applications_service),
 ):
-    ...
+    applications = await app_service.create_applications(app_create)
+    return ApplicationsCreateResponse(**applications.__dict__)
 
 
 @router.get(
@@ -29,7 +30,7 @@ async def create_appplications(
     summary="Получить заявку",
     response_model=ApplicationsGetResponse,
 )
-async def get_transactions(
+async def get_applications(
     pagination: PaginationSchema,
     app_service: ApplicationsService = Depends(get_applications_service),
 ):
