@@ -2,7 +2,7 @@ from logging.config import fileConfig
 
 from alembic import context
 from core.config import settings
-from infra.postgres import Base
+from infra.postgres.postgres import Base
 from models.entities import Application  # модели
 from sqlalchemy import engine_from_config, pool
 

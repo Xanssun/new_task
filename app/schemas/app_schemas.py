@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 from uuid import UUID
 
 from pydantic import BaseModel, Field
@@ -35,7 +36,14 @@ class ApplicationsGetResponse(BaseModel):
     applications: list[ApplicationsInDB]
 
 
+class ApplicationKafkaModel(BaseModel):
+    id: str
+    user_name: str
+    description: str
+    created_at: datetime
+
+
 class PaginationSchema(BaseModel):
     page: int = Field(1, ge=1, description="Номер текущей страницы")
     size: int = Field(10, ge=1, description="Количество записей на странице")
-    user_name: str = Field(None, description="Имя пользователя для фильтрации")
+    user_name: Optional[str] = Field(None, description="Имя пользователя для фильтрации")
