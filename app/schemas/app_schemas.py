@@ -15,9 +15,24 @@ class ApplicationsCreateResponse(BaseModel):
     description: str
     created_at: datetime
 
+    model_config = {
+        "from_attributes": True
+    }
+
+
+class ApplicationsInDB(BaseModel):
+    id: UUID
+    user_name: str
+    description: str
+    created_at: datetime
+
+    model_config = {
+        "from_attributes": True
+    }
+
 
 class ApplicationsGetResponse(BaseModel):
-    ...
+    applications: list[ApplicationsInDB]
 
 
 class PaginationSchema(BaseModel):

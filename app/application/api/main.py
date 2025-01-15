@@ -2,7 +2,7 @@ from application.api.v1.handlers import router
 from fastapi import FastAPI
 
 
-def create_app():
+def create_app() -> FastAPI:
     app = FastAPI(
         title = 'Microservice',
         docs_url = '/api/docs',
