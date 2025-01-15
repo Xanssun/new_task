@@ -22,11 +22,12 @@ class ApplicationsService:
         return ApplicationsCreateResponse.model_validate(application)
 
     async def get_applications(self, pagination: PaginationSchema) -> list[ApplicationsInDB]:
-        query = (
-            select(Application)
-            .offset((pagination.page - 1) * pagination.size)
-            .limit(pagination.size)
-        )
+        query = select(Application)
+
+        if pagination.user_name:
+            query = query.where(Application.user_name.ilike(f"%{pagination.user_name}%"))
+
+        query = query.offset((pagination.page - 1) * pagination.size).limit(pagination.size)
 
         result = await self.db_session.execute(query)
         applications = result.scalars().all()

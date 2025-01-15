@@ -38,3 +38,4 @@ class ApplicationsGetResponse(BaseModel):
 class PaginationSchema(BaseModel):
     page: int = Field(1, ge=1, description="Номер текущей страницы")
     size: int = Field(10, ge=1, description="Количество записей на странице")
+    user_name: str = Field(None, description="Имя пользователя для фильтрации")
