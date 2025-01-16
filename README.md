@@ -30,3 +30,4 @@
 
 ## Полезная документация
 - http://localhost:8000/api/docs#/ - Документация api
+- http://localhost:8090/ - Kafka UI
