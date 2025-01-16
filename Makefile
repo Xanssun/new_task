@@ -43,6 +43,10 @@ app-logs:
 kafka-logs:
 	${DC} -f ${KAFKA_FILE} logs -f
 
+.PHONY: test
+test:
+	${EXEC} ${APP_CONTAINER} pytest
+
 
 .PHONY: all
 all:
